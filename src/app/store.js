@@ -21,7 +21,7 @@ export const store = configureStore({
 // Take a survey page --> All names & descriptions of surveys created by people are found here
 //                    --> Ability to click the survey the user wants to do and it routes to survey specific page where the form created in the create survey area is displayed
 //                    --> Ability to save survey choices.
-//                    --> There should be a piece of state dedicated to each survey to hold the responses.
+//                    --> Survey responses will be saved within surveyResponses state under that specific survey id/key
 //                    --> Ability to view responses after one has taken a survey.
 
 
@@ -29,3 +29,12 @@ export const store = configureStore({
 // Either allow creator of survey to save draft of survey or allow it to be saved and edited later by specific person who created it.
 // Allow survey's to be shareable by the link & does not show up as 404 not found when sharing specific link
 // Allow survey creators to view survey responses without taking the survey. Need some sort of authorization.
+// Allow survey creators to move different elements into different spaces before saving.
+
+// Slices of state:
+// createSurvey state reducer will have ability to add different types of elements all wrapped within a div. Each div will be given a unique id/key. So we can have "addInputType: checkbox/range/text/date/email/number/submit/..etc"
+//                --> Each input type will have an attribute of required and an id that will match the for attribute in the label which will be called "title" that the user must fill out
+//                --> Each survery itself must have a unique id/key associated with it.
+// createSurvey state reducer will have the ability to remove an element of their choosing. Will filter out the div with the id that matches the id of the payload.
+
+// surveyResponses state reducer will only have the ability to add saved responses to each createdSurvey. 
