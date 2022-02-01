@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
+import createSurveySlice from '../features/createSurvey/createSurveySlice';
 
 export const store = configureStore({
   reducer: {
-    
+    createSurvey: createSurveySlice,
   },
 });
 
@@ -30,7 +31,7 @@ export const store = configureStore({
 // Allow survey's to be shareable by the link & does not show up as 404 not found when sharing specific link
 // Allow survey creators to view survey responses without taking the survey. Need some sort of authorization.
 // Allow survey creators to move different elements into different spaces before saving.
-// Allow survey creators to delete their surveys.
+// Allow survey creators to delete/edit their surveys after it's posted.
 
 // Slices of state:
 // createSurvey state will hold info of the surveys that are created in realtime. 
@@ -45,6 +46,7 @@ export const store = configureStore({
 // surveyResponses state reducer will only have the ability to add saved responses to each createdSurvey and add new surveys as well. 
 //                --> The state itself will be an object of objects of objects...etc. The primary level will be the state, the second level will be the different surveys, the tertiary level will be the different results of each survey (separated by unique IDS) and the quarternary level will be the individual responses from on person from that specific survey.
 
-// Step 1: Create landing page + routing to different areas
-// Step 2: Set up slices of state
+// ***Step 1: Create landing page + routing to different areas
+// ***Step 2: Set up slices of state
 // Step 3. Set up createSurvey reducer --> UI --> dispatches --> separate into components if haven't done already
+//        --> Need to set up unique ID system so user can create multiple checkbox questions but the id's of the inputs & containers will be unique each time.**

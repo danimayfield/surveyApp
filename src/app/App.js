@@ -1,13 +1,27 @@
-import React from 'react';
-import '../App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Landing from "../components/Landing";
+import { Nav, Footer } from "../components/NavAndFooter";
+import CreateSurvey from "../features/createSurvey/createSurvey";
+import TakeASurvey from "../features/surveys/surveys";
+import SurveyResponses from "../features/surveyResponses/surveyResponses";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        
-      </header>
-    </div>
+    <BrowserRouter>
+      <div>
+        <Nav />
+        <Routes>
+          <Route path='/*' element={<Landing />}></Route>
+          <Route path="/create" element={<CreateSurvey/>}></Route>
+          <Route path="/take/*" element={<TakeASurvey/>}></Route>
+          {/* Need a Route for each individual Survey - maybe separated by ID? */}
+          <Route path='survey/responses' element={<SurveyResponses/>}></Route>
+          {/* ! Need to adjust this to see the responses of the individual survey selected ^^ */}
+        </Routes>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
