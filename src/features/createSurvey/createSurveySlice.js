@@ -9,7 +9,7 @@ export const createSurveySlice = createSlice({
             state.push(action.payload)
         },
         removeElement: (state,action) => {
-            state.filter(recipe => recipe.id !== action.payload.id)
+            state.filter(question => question.questionId !== action.payload.quesitonId)
         },
     },
 });
