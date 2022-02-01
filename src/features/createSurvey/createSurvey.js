@@ -76,8 +76,8 @@ const CreateSurvey = () => {
             questionId: wrapper.id,
             questionType: "checkbox",
             questionValues: {
-              checkbox1: check1Name,
-              checkbox2: check2Name,
+              value1: check1Name,
+              value2: check2Name,
             },
           })
         );
@@ -111,9 +111,9 @@ const CreateSurvey = () => {
             questionId: wrapper.id,
             questionType: "checkbox",
             questionValues: {
-              checkbox1: check1Name,
-              checkbox2: check2Name,
-              checkbox3: check3Name,
+              value1: check1Name,
+              value2: check2Name,
+              value3: check3Name,
             },
           })
         );
@@ -160,10 +160,10 @@ const CreateSurvey = () => {
             questionId: wrapper.id,
             questionType: "checkbox",
             questionValues: {
-              checkbox1: check1Name,
-              checkbox2: check2Name,
-              checkbox3: check3Name,
-              checkbox4: check4Name,
+              value1: check1Name,
+              value2: check2Name,
+              value3: check3Name,
+              value4: check4Name,
             },
           })
         );
@@ -223,11 +223,11 @@ const CreateSurvey = () => {
             questionId: wrapper.id,
             questionType: "checkbox",
             questionValues: {
-              checkbox1: check1Name,
-              checkbox2: check2Name,
-              checkbox3: check3Name,
-              checkbox4: check4Name,
-              checkbox5: check5Name,
+              value1: check1Name,
+              value2: check2Name,
+              value3: check3Name,
+              value4: check4Name,
+              value5: check5Name,
             },
           })
         );
@@ -295,8 +295,8 @@ const CreateSurvey = () => {
             questionId: wrapper.id,
             questionType: "radio",
             questionValues: {
-              radio1: radio1Name,
-              radio2: radio2Name,
+              value1: radio1Name,
+              value2: radio2Name,
             },
           })
         );
@@ -330,10 +330,9 @@ const CreateSurvey = () => {
             questionId: wrapper.id,
             questionType: "radio",
             questionValues: {
-              radio1: radio1Name,
-              radio2: radio2Name,
-              radio3: radio3Name,
-            },
+              value1: radio1Name,
+              value2: radio2Name,
+              value3: radio3Name,
           })
         );
       } else if (status === "radio4") {
@@ -380,10 +379,10 @@ const CreateSurvey = () => {
             questionId: wrapper.id,
             questionType: "radio",
             questionValues: {
-              radio1: radio1Name,
-              radio2: radio2Name,
-              radio3: radio3Name,
-              radio4: radio4Name,
+              value1: radio1Name,
+              value2: radio2Name,
+              value3: radio3Name,
+              value4: radio4Name,
             },
           })
         );
