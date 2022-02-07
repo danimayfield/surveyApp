@@ -7,7 +7,7 @@ const SurveyQuestions = () => {
   return (
     <div className="questionsWrapper">
       {survey.map((question) => {
-        const id4 = nextId();
+        const id5 = nextId();
         return (
           <div
             className="questionContainer"
@@ -17,11 +17,11 @@ const SurveyQuestions = () => {
             <h3>{question.questionTitle}</h3>
             <div>
               {question.questionValues.map((questionValue) => {
-                const id2 = nextId();
                 const id3 = nextId();
+                const id4 = nextId();
                 
                 return (
-                  <div key={id2} id={id2}>
+                  <div key={id3} id={id3}>
                     <input
                       type={
                         question.questionType === "checkbox"
@@ -30,12 +30,12 @@ const SurveyQuestions = () => {
                       }
                       name={
                         question.questionType === "checkbox" 
-                         ? id3 
-                         : id4
+                         ? id4 
+                         : id5
                     }
-                      id={id3}
+                      id={id4}
                     />
-                    <label htmlFor={id3}>{questionValue}</label>
+                    <label htmlFor={id4}>{questionValue}</label>
                   </div>
                 );
               })}

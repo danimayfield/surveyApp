@@ -98,14 +98,14 @@ const CreateSurvey = () => {
       const radio2Name = document.getElementById("radio2").value;
 
       // Creating unique IDs:
-      const id1 = nextId();
+      const id2 = nextId();
 
       if (status === "radio2") {
         // Dispatch information:
         dispatch(
           addElement({
             questionTitle: title,
-            questionId: id1,
+            questionId: id2,
             questionType: "radio",
             questionValues: [radio1Name, radio2Name],
           })
@@ -118,7 +118,7 @@ const CreateSurvey = () => {
         dispatch(
           addElement({
             questionTitle: title,
-            questionId: id1,
+            questionId: id2,
             questionType: "radio",
             questionValues: [radio1Name, radio2Name, radio3Name],
           })
@@ -132,7 +132,7 @@ const CreateSurvey = () => {
         dispatch(
           addElement({
             questionTitle: title,
-            questionId: id1,
+            questionId: id2,
             questionType: "radio",
             questionValues: [radio1Name, radio2Name, radio3Name, radio4Name],
           })
