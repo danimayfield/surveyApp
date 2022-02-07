@@ -1,4 +1,4 @@
-import { useSelector, useDispatch, useStore } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 
 import { addElement, removeElement } from "./createSurveySlice";
@@ -11,379 +11,130 @@ import {
   IoRadioButtonOff,
 } from "react-icons/io5";
 
+import SurveyQuestions from "../../components/SurveyQuestions";
+
 const CreateSurvey = () => {
   const dispatch = useDispatch();
-  const [status, setStatus] = useState("none");
+  const [status, setStatus] = useState("");
   const [checkedHover, setCheckedHover] = useState(0);
   const [radioHover, setRadioHover] = useState(0);
 
   const onAddInputHandler = (event, { type }) => {
+    event.preventDefault();
     if (type === "checkbox") {
-      event.preventDefault();
-      const form = document.getElementById("createSurveyForm");
+      // Get the values entered by the user:
       const title = document.getElementById("questionTitle").value;
       const check1Name = document.getElementById("checkbox1").value;
       const check2Name = document.getElementById("checkbox2").value;
 
-      const wrapper = document.createElement("div");
-      const container1 = document.createElement("div");
-      const container2 = document.createElement("div");
-      const question = document.createElement("h3");
-      const label1 = document.createElement("label");
-      const label2 = document.createElement("label");
-      const checkbox1 = document.createElement("input");
-      const checkbox2 = document.createElement("input");
-
-      // Change text-content:
-      question.textContent = title;
-      label1.textContent = check1Name;
-      label2.textContent = check2Name;
-
       // Creating unique IDs:
       const id1 = nextId();
-      const id2 = nextId();
-      const id4 = nextId();
-
-      // Set attributes:
-      checkbox1.setAttribute("type", "checkbox");
-      checkbox1.setAttribute("id", id1);
-      checkbox1.setAttribute("name", id1);
-      label1.setAttribute("htmlFor", id1);
-      checkbox2.setAttribute("type", "checkbox");
-      checkbox2.setAttribute("id", id2);
-      checkbox2.setAttribute("name", id2);
-      label2.setAttribute("htmlFor", id2);
-      wrapper.setAttribute("id", id4);
-
-      // Set classes:
-      wrapper.classList.add("inputWrapper");
-
-      // Append elements
-      form.appendChild(wrapper);
-      wrapper.appendChild(question);
-      wrapper.appendChild(container1);
-      wrapper.appendChild(container2);
-      container1.appendChild(checkbox1);
-      container1.appendChild(label1);
-      container2.appendChild(checkbox2);
-      container2.appendChild(label2);
 
       if (status === "checkbox2") {
         // Dispatch information:
         dispatch(
           addElement({
             questionTitle: title,
-            questionId: wrapper.id,
+            questionId: id1,
             questionType: "checkbox",
-            questionValues: {
-              value1: check1Name,
-              value2: check2Name,
-            },
+            questionValues: [check1Name, check2Name],
           })
         );
       } else if (status === "checkbox3") {
+        // Get the values entered by the user:
         const check3Name = document.getElementById("checkbox3").value;
-        const label3 = document.createElement("label");
-        const checkbox3 = document.createElement("input");
-        const container3 = document.createElement("div");
-
-        // Change text-content:
-        label3.textContent = check3Name;
-
-        // Creating unique id
-        const id3 = nextId();
-
-        // Set Attributes
-        checkbox3.setAttribute("type", "checkbox");
-        checkbox3.setAttribute("id", id3);
-        checkbox3.setAttribute("name", id3);
-        label3.setAttribute("htmlFor", id3);
-
-        // Append Elements
-        wrapper.appendChild(container3);
-        container3.appendChild(checkbox3);
-        container3.appendChild(label3);
 
         // Dispatch information:
         dispatch(
           addElement({
             questionTitle: title,
-            questionId: wrapper.id,
+            questionId: id1,
             questionType: "checkbox",
-            questionValues: {
-              value1: check1Name,
-              value2: check2Name,
-              value3: check3Name,
-            },
+            questionValues: [check1Name, check2Name, check3Name],
           })
         );
       } else if (status === "checkbox4") {
+        // Get the values entered by the user:
         const check3Name = document.getElementById("checkbox3").value;
-        const label3 = document.createElement("label");
-        const checkbox3 = document.createElement("input");
         const check4Name = document.getElementById("checkbox4").value;
-        const label4 = document.createElement("label");
-        const checkbox4 = document.createElement("input");
-        const container3 = document.createElement("div");
-        const container4 = document.createElement("div");
-
-        // Change text-content:
-        label3.textContent = check3Name;
-        label4.textContent = check4Name;
-
-        // Creating unique id
-        const id3 = nextId();
-        const id5 = nextId();
-
-        // Set Attributes
-        checkbox3.setAttribute("type", "checkbox");
-        checkbox3.setAttribute("id", id3);
-        checkbox3.setAttribute("name", id3);
-        label3.setAttribute("htmlFor", id3);
-        checkbox4.setAttribute("type", "checkbox");
-        checkbox4.setAttribute("id", id5);
-        checkbox4.setAttribute("name", id5);
-        label4.setAttribute("htmlFor", id5);
-
-        // Append Elements
-        wrapper.appendChild(container3);
-        wrapper.appendChild(container4);
-        container3.appendChild(checkbox3);
-        container3.appendChild(label3);
-        container4.appendChild(checkbox4);
-        container4.appendChild(label4);
 
         // Dispatch information:
         dispatch(
           addElement({
             questionTitle: title,
-            questionId: wrapper.id,
+            questionId: id1,
             questionType: "checkbox",
-            questionValues: {
-              value1: check1Name,
-              value2: check2Name,
-              value3: check3Name,
-              value4: check4Name,
-            },
+            questionValues: [check1Name, check2Name, check3Name, check4Name],
           })
         );
       } else if (status === "checkbox5") {
+        // Get the values entered by the user:
         const check3Name = document.getElementById("checkbox3").value;
-        const label3 = document.createElement("label");
-        const checkbox3 = document.createElement("input");
         const check4Name = document.getElementById("checkbox4").value;
-        const label4 = document.createElement("label");
-        const checkbox4 = document.createElement("input");
         const check5Name = document.getElementById("checkbox5").value;
-        const label5 = document.createElement("label");
-        const checkbox5 = document.createElement("input");
-        const container3 = document.createElement("div");
-        const container4 = document.createElement("div");
-        const container5 = document.createElement("div");
-
-        // Change text-content:
-        label3.textContent = check3Name;
-        label4.textContent = check4Name;
-        label5.textContent = check5Name;
-
-        // Creating unique id
-        const id3 = nextId();
-        const id5 = nextId();
-        const id6 = nextId();
-
-        // Set Attributes
-        checkbox3.setAttribute("type", "checkbox");
-        checkbox3.setAttribute("id", id3);
-        checkbox3.setAttribute("name", id3);
-        label3.setAttribute("htmlFor", id3);
-        checkbox4.setAttribute("type", "checkbox");
-        checkbox4.setAttribute("id", id5);
-        checkbox4.setAttribute("name", id5);
-        label4.setAttribute("htmlFor", id5);
-        checkbox5.setAttribute("type", "checkbox");
-        checkbox5.setAttribute("id", id6);
-        checkbox5.setAttribute("name", id6);
-        label5.setAttribute("htmlFor", id6);
-
-        // Append Elements
-        wrapper.appendChild(container3);
-        wrapper.appendChild(container4);
-        wrapper.appendChild(container5);
-        container3.appendChild(checkbox3);
-        container3.appendChild(label3);
-        container4.appendChild(checkbox4);
-        container4.appendChild(label4);
-        container5.appendChild(checkbox5);
-        container5.appendChild(label5);
 
         // Dispatch information:
         dispatch(
           addElement({
             questionTitle: title,
-            questionId: wrapper.id,
+            questionId: id1,
             questionType: "checkbox",
-            questionValues: {
-              value1: check1Name,
-              value2: check2Name,
-              value3: check3Name,
-              value4: check4Name,
-              value5: check5Name,
-            },
+            questionValues: [
+              check1Name,
+              check2Name,
+              check3Name,
+              check4Name,
+              check5Name,
+            ],
           })
         );
       }
-
       //   Reset everything
       setStatus("none");
     } else if (type === "radio") {
-      event.preventDefault();
-
-      const form = document.getElementById("createSurveyForm");
+      // Get the values entered by the user:
       const title = document.getElementById("questionTitle").value;
       const radio1Name = document.getElementById("radio1").value;
       const radio2Name = document.getElementById("radio2").value;
 
-      const wrapper = document.createElement("div");
-      const container1 = document.createElement("div");
-      const container2 = document.createElement("div");
-      const question = document.createElement("h3");
-      const label1 = document.createElement("label");
-      const label2 = document.createElement("label");
-      const radio1 = document.createElement("input");
-      const radio2 = document.createElement("input");
-
-      // Change text-content:
-      question.textContent = title;
-      label1.textContent = radio1Name;
-      label2.textContent = radio2Name;
-
       // Creating unique IDs:
       const id1 = nextId();
-      const id2 = nextId();
-      const id3 = nextId();
-      const id4 = nextId();
-
-      // Set attributes:
-      radio1.setAttribute("type", "radio");
-      radio1.setAttribute("id", id1);
-      radio1.setAttribute("name", id4);
-      label1.setAttribute("htmlFor", id1);
-      radio2.setAttribute("type", "radio");
-      radio2.setAttribute("id", id2);
-      radio2.setAttribute("name", id4);
-      label2.setAttribute("htmlFor", id2);
-      wrapper.setAttribute("id", id3);
-
-      // Set classes:
-      wrapper.classList.add("inputWrapper");
-
-      // Append elements
-      form.appendChild(wrapper);
-      wrapper.appendChild(question);
-      wrapper.appendChild(container1);
-      wrapper.appendChild(container2);
-      container1.appendChild(radio1);
-      container1.appendChild(label1);
-      container2.appendChild(radio2);
-      container2.appendChild(label2);
 
       if (status === "radio2") {
         // Dispatch information:
         dispatch(
           addElement({
             questionTitle: title,
-            questionId: wrapper.id,
+            questionId: id1,
             questionType: "radio",
-            questionValues: {
-              value1: radio1Name,
-              value2: radio2Name,
-            },
+            questionValues: [radio1Name, radio2Name],
           })
         );
       } else if (status === "radio3") {
+        // Get the values entered by the user:
         const radio3Name = document.getElementById("radio3").value;
-        const radio3 = document.createElement("input");
-        const label3 = document.createElement("label");
-        const container3 = document.createElement("div");
-
-        // Change text-content:
-        label3.textContent = radio3Name;
-
-        // Creating unique IDs:
-        const id5 = nextId();
-
-        // Set attributes:
-        radio3.setAttribute("type", "radio");
-        radio3.setAttribute("id", id5);
-        radio3.setAttribute("name", id4);
-        label3.setAttribute("htmlFor", id5);
-
-        // Append elements
-        wrapper.appendChild(container3);
-        container3.appendChild(radio3);
-        container3.appendChild(label3);
 
         // Dispatch information:
         dispatch(
           addElement({
             questionTitle: title,
-            questionId: wrapper.id,
+            questionId: id1,
             questionType: "radio",
-            questionValues: {
-              value1: radio1Name,
-              value2: radio2Name,
-              value3: radio3Name,
+            questionValues: [radio1Name, radio2Name, radio3Name],
           })
         );
       } else if (status === "radio4") {
+        // Get the values entered by the user:
         const radio3Name = document.getElementById("radio3").value;
         const radio4Name = document.getElementById("radio4").value;
-
-        const radio3 = document.createElement("input");
-        const radio4 = document.createElement("input");
-        const label3 = document.createElement("label");
-        const label4 = document.createElement("label");
-        const container3 = document.createElement("div");
-        const container4 = document.createElement("div");
-
-        // Change text-content:
-        label3.textContent = radio3Name;
-        label4.textContent = radio4Name;
-
-        // Creating unique IDs:
-        const id5 = nextId();
-        const id6 = nextId();
-
-        // Set attributes:
-        radio3.setAttribute("type", "radio");
-        radio3.setAttribute("id", id5);
-        radio3.setAttribute("name", id4);
-        label3.setAttribute("htmlFor", id5);
-        radio4.setAttribute("type", "radio");
-        radio4.setAttribute("id", id6);
-        radio4.setAttribute("name", id4);
-        label4.setAttribute("htmlFor", id6);
-
-        // Append elements
-        wrapper.appendChild(container3);
-        wrapper.appendChild(container4);
-        container3.appendChild(radio3);
-        container3.appendChild(label3);
-        container4.appendChild(radio4);
-        container4.appendChild(label4);
 
         // Dispatch information:
         dispatch(
           addElement({
             questionTitle: title,
-            questionId: wrapper.id,
+            questionId: id1,
             questionType: "radio",
-            questionValues: {
-              value1: radio1Name,
-              value2: radio2Name,
-              value3: radio3Name,
-              value4: radio4Name,
-            },
+            questionValues: [radio1Name, radio2Name, radio3Name, radio4Name],
           })
         );
       }
@@ -397,6 +148,7 @@ const CreateSurvey = () => {
     <div>
       <h2>Create A Survey!</h2>
       <form className="createSurveyForm" id="createSurveyForm">
+        <SurveyQuestions />
         <input type="submit" value="Save Survey" />
       </form>
       <div>
