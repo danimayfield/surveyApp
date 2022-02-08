@@ -11,12 +11,13 @@ export const createSurveySlice = createSlice({
         removeElement: (state,action) => {
             state.filter(question => question.questionId !== action.payload.quesitonId)
         },
+        reset: () => {return []}
     },
 });
 
 // Selectors
 
 // Exports
-export const {addElement, removeElement, statusType} = createSurveySlice.actions;
+export const {addElement, removeElement, reset} = createSurveySlice.actions;
 
 export default createSurveySlice.reducer;

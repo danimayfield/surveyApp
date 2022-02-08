@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 
-import { addElement, removeElement } from "./createSurveySlice";
+import { addElement, removeElement, reset } from "./createSurveySlice";
 
 import nextId from "react-id-generator";
 import {
@@ -12,12 +12,17 @@ import {
 } from "react-icons/io5";
 
 import SurveyQuestions from "../../components/SurveyQuestions";
+import { getDatabase, ref, set } from "firebase/database";
+import firebase from "../../firebase";
 
 const CreateSurvey = () => {
   const dispatch = useDispatch();
+  const survey = useSelector((state) => state.createSurvey);
   const [status, setStatus] = useState("");
   const [checkedHover, setCheckedHover] = useState(0);
   const [radioHover, setRadioHover] = useState(0);
+  const [surveyTitle, setSurveyTitle] = useState("");
+
 
   const onAddInputHandler = (event, { type }) => {
     event.preventDefault();
@@ -144,10 +149,40 @@ const CreateSurvey = () => {
     }
   };
 
+  const handleSaveSurvey = (event) => {
+    event.preventDefault();
+
+    const database = getDatabase(firebase);
+
+    // Add created survey to the database
+    set(ref(database, "surveys/" + surveyTitle), {
+      surveyTitle: surveyTitle,
+      surveyQuestions: survey,
+      surveyId: nextId()
+    });
+
+    alert(`Your survey: "${surveyTitle}" has been saved! Thank you!`)
+
+    // Reset 
+    dispatch(reset())
+    setSurveyTitle("");
+
+  
+  };
+
   return (
     <div>
       <h2>Create A Survey!</h2>
-      <form className="createSurveyForm" id="createSurveyForm">
+      <form
+        className="createSurveyForm"
+        id="createSurveyForm"
+        onSubmit={(event) => handleSaveSurvey(event)}
+      >
+        <h3>What would you like to name your survey?</h3>
+        <label htmlFor="surveyTitle" className="visuallyHidden">
+          Survey Title:
+        </label>
+        <input type="text" name="surveyTitle" id="surveyTitle" onChange={(event) => setSurveyTitle(event.target.value)} value={surveyTitle} required />
         <SurveyQuestions />
         <input type="submit" value="Save Survey" />
       </form>
