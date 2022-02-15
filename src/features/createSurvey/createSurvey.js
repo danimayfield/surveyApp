@@ -22,6 +22,7 @@ const CreateSurvey = () => {
   const [checkedHover, setCheckedHover] = useState(0);
   const [radioHover, setRadioHover] = useState(0);
   const [surveyTitle, setSurveyTitle] = useState("");
+  const [description, setDescription] = useState("");
 
 
   const onAddInputHandler = (event, { type }) => {
@@ -157,6 +158,7 @@ const CreateSurvey = () => {
     // Add created survey to the database
     set(ref(database, "surveys/" + surveyTitle), {
       surveyTitle: surveyTitle,
+      surveyDescription: description,
       surveyQuestions: survey,
       surveyId: nextId()
     });
@@ -164,8 +166,9 @@ const CreateSurvey = () => {
     alert(`Your survey: "${surveyTitle}" has been saved! Thank you!`)
 
     // Reset 
-    dispatch(reset())
+    dispatch(reset());
     setSurveyTitle("");
+    setDescription("");
 
   
   };
@@ -183,6 +186,11 @@ const CreateSurvey = () => {
           Survey Title:
         </label>
         <input type="text" name="surveyTitle" id="surveyTitle" onChange={(event) => setSurveyTitle(event.target.value)} value={surveyTitle} required />
+        <label htmlFor="description">
+          Survey Description:
+        </label>
+        <input type="text" name="description" id="description" onChange={(event) => setDescription(event.target.value)} value={description} required  />
+        <p>Please be as descriptive as possible.</p>
         <SurveyQuestions />
         <input type="submit" value="Save Survey" />
       </form>

@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSurveySlice from '../features/createSurvey/createSurveySlice';
+import  surveySlice  from '../features/surveys/surveysSlice';
 
 export const store = configureStore({
   reducer: {
     createSurvey: createSurveySlice,
+    surveys: surveySlice,
   },
 });
 
@@ -51,4 +53,6 @@ export const store = configureStore({
 // ***Step 3. Set up createSurvey reducer --> UI --> dispatches --> separate into components if haven't done already
 // ***       --> Need to set up unique ID system so user can create multiple checkbox questions but the id's of the inputs & containers will be unique each time.**
 // ***Step 4: OnSubmit of survey - once user is ready to save their survey --> push the full survey array of question objects to firebase
-// Step 5: Set up the surveysSlice to get info from firebase on load? --> unsure if this will be entirely necessary and if this state is just a useless middleman?
+// ***Step 5: Set up the surveysSlice to get info from firebase on load? --> unsure if this will be entirely necessary and if this state is just a useless middleman?
+// ***          --> May need to set up middleware/thunk activity with this
+// Step 6: Set up the react routing/useParams to Link the survey preview to the actual survey.
